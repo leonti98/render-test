@@ -1,10 +1,12 @@
-require('dotenv').config();
 const express = require('express');
 const app = express();
-const cors = require('cors');
+require('dotenv').config();
+
 const Note = require('./models/note');
 
-app.use(cors());
+let notes = [];
+
+app.use(express.static('dist'));
 
 const requestLogger = (request, response, next) => {
   console.log('Method:', request.method);
@@ -14,9 +16,12 @@ const requestLogger = (request, response, next) => {
   next();
 };
 
+const cors = require('cors');
+
+app.use(cors());
+
 app.use(express.json());
 app.use(requestLogger);
-app.use(express.static('dist'));
 
 const unknownEndpoint = (request, response) => {
   response.status(404).send({ error: 'unknown endpoint' });
