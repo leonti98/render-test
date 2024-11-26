@@ -55,7 +55,7 @@ app.get('/api/notes/:id', (request, response, next) => {
 app.delete('/api/notes/:id', (request, response, next) => {
   Note.findByIdAndDelete(request.params.id)
     .then(() => {
-      response.status(204).end();
+      response.status(204).json({ message: 'Resource has been deleted' }).end();
     })
     .catch((error) => next(error));
 });
