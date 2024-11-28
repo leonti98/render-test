@@ -1,6 +1,6 @@
-import globals from 'globals';
-import stylisticJs from '@stylistic/eslint-plugin-js';
-import js from '@eslint/js';
+import globals from 'globals'
+import stylisticJs from '@stylistic/eslint-plugin-js'
+import js from '@eslint/js'
 
 export default [
   js.configs.recommended,
@@ -29,6 +29,11 @@ export default [
     },
   },
   {
-    ignores: ['dist/**', 'build/**'],
+    ignores: [
+      'dist/**',
+      'build/**',
+      'frontend/node_modules/**',
+      'frontend/dist/**',
+    ],
   },
-];
+]
